@@ -27,22 +27,22 @@ class UserManager(models.Manager):
         
         errors = {}
         if len(form_data['first_name']) < 1:
-            errors['first_name'] = 'First Name field is required.'
+            errors['first_name'] = 'First Name field is required!'
 
         if len(form_data['last_name']) < 1:
-            errors['last_name'] = 'Last Name field is required.'
+            errors['last_name'] = 'Last Name field is required!'
 
         if len(form_data['username']) < 5:
-            errors['username'] = 'Username must be at least 5 characters.'
+            errors['username'] = 'Username must be at least 5 characters!'
 
 
         if form_data['password'] != form_data['confirm']:
-            errors['password'] = "Passwords do not match"
+            errors['password'] = "Passwords do not match!"
         
         # prevent duplicate usernames!
         users_with_username = self.filter(username=form_data['username'])
         if users_with_username: # if NON-EMPTY list
-            errors['username'] = 'username already in use.'
+            errors['username'] = 'username already in use!'
 
         return errors
 # Create your models here.
